@@ -1,3 +1,4 @@
+import { httpLogger } from '#middleware/logger.middleware.js';
 import express from 'express';
 
 import routes from './routes/index.js';
@@ -5,6 +6,8 @@ import routes from './routes/index.js';
 const app = express();
 
 // Middlewares
+app.use(httpLogger);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
