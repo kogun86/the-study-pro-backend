@@ -1,11 +1,10 @@
+import { PORT } from '#config/env.js';
 import logger from '#config/logger.js';
 
 import app from './app.js';
 
-const PORT: string = process.env.PORT ?? '8080';
-
 const server = app.listen(PORT, () => {
-  logger.info(`Server is running on port ${PORT}`);
+  logger.info(`Server is running on port ${String(PORT)}`);
 });
 
 const shutdown = (signal: string) => {

@@ -1,8 +1,10 @@
 import pino, { LoggerOptions } from 'pino';
 
+import { LOG_LEVEL, NODE_ENV } from './env.js';
+
 const config: LoggerOptions = {
-  level: process.env.LOG_LEVEL ?? 'info',
-  ...(process.env.NODE_ENV === 'development' && {
+  level: LOG_LEVEL,
+  ...(NODE_ENV === 'development' && {
     transport: { options: { colorize: true }, target: 'pino-pretty' },
   }),
 };
